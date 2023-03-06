@@ -1,9 +1,10 @@
+Attribute VB_Name = "Module1"
 Sub stock_analysis()
 
 
     Dim ws As Worksheet
 
-    ' loop through all worksheets
+    'loop through all worksheets
         For Each ws In Worksheets
         
             ' declare variables
@@ -50,7 +51,7 @@ Sub stock_analysis()
             
             
             
-            ' Create Headers
+            'Create Headers
             ws.Range("I1").Value = "Ticker"
             ws.Range("J1").Value = "Yearly Change"
             ws.Range("K1").Value = "Percent Change"
@@ -69,10 +70,10 @@ Sub stock_analysis()
             
             
             
-            ' Iterate all rows
+            'Iterate all rows
              For i = 2 To last_row
             
-                ' When we get to a Different ticker
+                'When we get to a Different ticker
                 If ws.Cells(i, 1).Value <> ws.Cells(i + 1, 1).Value Then
                 
                         ' Add volume for same ticker
@@ -84,14 +85,14 @@ Sub stock_analysis()
                         ws.Range("I" & sum_row).Value = ws.Cells(i, 1).Value
                         
                         
-                        ' Define last row for same ticker
+                        'Define last row for same ticker
                          end_price = ws.Cells(i, 6).Value
                          
                         
                          ' calculate yearly change
                         yearly_change = end_price - open_price
                         
-                        ' get yearly change in table
+                        'get yearly change in table
                         ws.Range("J" & sum_row).Value = yearly_change
                         
                         
@@ -162,7 +163,7 @@ Sub stock_analysis()
                             total_vol = 0
                     
                         
-                ' if it is the Same ticker
+                'if it is the Same ticker
                 Else
                 
                          
@@ -176,7 +177,7 @@ Sub stock_analysis()
         
                Next i
             
-                            ' add locations for max increase/decrease/vol
+                             ' add locations for max increase/decrease/vol
                             
                             ws.Range("Q2").Value = FormatPercent(max_increase)
                             ws.Range("P2").Value = max_incticker
@@ -201,3 +202,4 @@ Sub stock_analysis()
 
 
 End Sub
+
